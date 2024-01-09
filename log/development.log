@@ -3259,3 +3259,503 @@ Processing by BoardsController#show as HTML
 Completed 200 OK in 17ms (Views: 13.8ms | ActiveRecord: 0.5ms | Allocations: 8019)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4212562607494965570)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (4.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4212562607494965570)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4212562607494965570)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4212562607494965570)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (10.9ms)[0m  [1m[35mCREATE DATABASE "kanban_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE DATABASE "kanban_test" ENCODING = 'unicode'[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4212562607494965570)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(4212562607494965570)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/boards/2" for ::1 at 2024-01-09 15:26:22 +0100
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BoardsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBoard Load (0.5ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:64:in `set_board'
+  Rendering layout layouts/application.html.erb
+  Rendering boards/show.html.erb within layouts/application
+  [1m[36mCard Load (0.9ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/views/boards/show.html.erb:20
+  Rendered boards/show.html.erb within layouts/application (Duration: 29.2ms | Allocations: 9364)
+  Rendered layout layouts/application.html.erb (Duration: 198.6ms | Allocations: 57781)
+Completed 200 OK in 234ms (Views: 200.0ms | ActiveRecord: 9.0ms | Allocations: 67274)
+
+
+Started GET "/boards" for ::1 at 2024-01-09 15:26:26 +0100
+Processing by BoardsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering boards/index.html.erb within layouts/application
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  ↳ app/views/boards/index.html.erb:8
+  [1m[36mCard Load (0.3ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/views/boards/index.html.erb:13
+  [1m[36mCard Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:13:in `last_change'
+  [1m[36mCard Maximum (0.4ms)[0m  [1m[34mSELECT MAX("cards"."updated_at") FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:15:in `last_change'
+  Rendered boards/index.html.erb within layouts/application (Duration: 17.9ms | Allocations: 4611)
+  Rendered layout layouts/application.html.erb (Duration: 36.6ms | Allocations: 10863)
+Completed 200 OK in 39ms (Views: 35.7ms | ActiveRecord: 1.6ms | Allocations: 11522)
+
+
+Started GET "/" for ::1 at 2024-01-09 15:26:27 +0100
+Processing by BoardsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering boards/index.html.erb within layouts/application
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  ↳ app/views/boards/index.html.erb:8
+  [1m[36mCard Load (0.3ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/views/boards/index.html.erb:13
+  [1m[36mCard Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:13:in `last_change'
+  [1m[36mCard Maximum (0.3ms)[0m  [1m[34mSELECT MAX("cards"."updated_at") FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:15:in `last_change'
+  Rendered boards/index.html.erb within layouts/application (Duration: 6.2ms | Allocations: 2731)
+  Rendered layout layouts/application.html.erb (Duration: 18.1ms | Allocations: 8860)
+Completed 200 OK in 20ms (Views: 17.6ms | ActiveRecord: 1.1ms | Allocations: 9298)
+
+
+Started GET "/boards/2" for ::1 at 2024-01-09 15:26:29 +0100
+Processing by BoardsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBoard Load (0.2ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:64:in `set_board'
+  Rendering layout layouts/application.html.erb
+  Rendering boards/show.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/views/boards/show.html.erb:20
+  Rendered boards/show.html.erb within layouts/application (Duration: 2.1ms | Allocations: 970)
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 7101)
+Completed 200 OK in 15ms (Views: 12.9ms | ActiveRecord: 0.5ms | Allocations: 8035)
+
+
+Started GET "/users/sign_in" for ::1 at 2024-01-09 15:26:31 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.6ms | Allocations: 671)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 25.0ms | Allocations: 5529)
+  Rendered layout layouts/application.html.erb (Duration: 35.9ms | Allocations: 11908)
+Completed 200 OK in 53ms (Views: 38.0ms | ActiveRecord: 2.7ms | Allocations: 17656)
+
+
+Started GET "/users/sign_up" for ::1 at 2024-01-09 15:26:33 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.2ms | Allocations: 203)
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 136)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 6.0ms | Allocations: 2145)
+  Rendered layout layouts/application.html.erb (Duration: 17.6ms | Allocations: 8532)
+Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 0.0ms | Allocations: 9706)
+
+
+Started POST "/users" for ::1 at 2024-01-09 15:26:59 +0100
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"blabla@test.at", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Register"}
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (5.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "blabla@test.at"], ["LIMIT", 1]]
+  [1m[36mUser Create (6.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", "2024-01-09 14:26:59.705308"], ["updated_at", "2024-01-09 14:26:59.705308"], ["email", "blabla@test.at"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 339ms (ActiveRecord: 14.5ms | Allocations: 9107)
+
+
+Started GET "/" for ::1 at 2024-01-09 15:26:59 +0100
+Processing by BoardsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering boards/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/boards/index.html.erb:2
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  ↳ app/views/boards/index.html.erb:8
+  [1m[36mCard Load (0.3ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/views/boards/index.html.erb:13
+  [1m[36mCard Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:13:in `last_change'
+  [1m[36mCard Maximum (0.3ms)[0m  [1m[34mSELECT MAX("cards"."updated_at") FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:15:in `last_change'
+  Rendered boards/index.html.erb within layouts/application (Duration: 10.8ms | Allocations: 3933)
+  Rendered layout layouts/application.html.erb (Duration: 22.8ms | Allocations: 10412)
+Completed 200 OK in 24ms (Views: 21.8ms | ActiveRecord: 1.5ms | Allocations: 11006)
+
+
+Started GET "/boards/new" for ::1 at 2024-01-09 15:27:06 +0100
+Processing by BoardsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering boards/new.html.erb within layouts/application
+  Rendered boards/_form.html.erb (Duration: 3.0ms | Allocations: 1080)
+  Rendered boards/new.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1373)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:48
+  Rendered layout layouts/application.html.erb (Duration: 18.0ms | Allocations: 8465)
+Completed 200 OK in 20ms (Views: 18.3ms | ActiveRecord: 0.3ms | Allocations: 8999)
+
+
+Started POST "/boards" for ::1 at 2024-01-09 15:27:09 +0100
+Processing by BoardsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "board"=>{"title"=>"Test"}, "commit"=>"Create Board"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/boards_controller.rb:27:in `block in create'
+  [1m[36mBoard Create (0.4ms)[0m  [1m[32mINSERT INTO "boards" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Test"], ["created_at", "2024-01-09 14:27:09.524542"], ["updated_at", "2024-01-09 14:27:09.524542"]]
+  ↳ app/controllers/boards_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/boards_controller.rb:27:in `block in create'
+Redirected to http://localhost:3000/boards/3
+Completed 302 Found in 7ms (ActiveRecord: 0.9ms | Allocations: 2620)
+
+
+Started GET "/boards/3" for ::1 at 2024-01-09 15:27:09 +0100
+Processing by BoardsController#show as TURBO_STREAM
+  Parameters: {"id"=>"3"}
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:64:in `set_board'
+  Rendering layout layouts/application.html.erb
+  Rendering boards/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/boards/show.html.erb:2
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 3]]
+  ↳ app/views/boards/show.html.erb:20
+  Rendered boards/show.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1551)
+  Rendered layout layouts/application.html.erb (Duration: 31.1ms | Allocations: 7979)
+Completed 200 OK in 35ms (Views: 31.8ms | ActiveRecord: 0.7ms | Allocations: 8931)
+
+
+Started GET "/boards/3/cards/new" for ::1 at 2024-01-09 15:27:11 +0100
+Processing by CardsController#new as HTML
+  Parameters: {"board_id"=>"3"}
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/cards_controller.rb:67:in `set_board'
+  Rendering layout layouts/application.html.erb
+  Rendering cards/new.html.erb within layouts/application
+  Rendered cards/_form.html.erb (Duration: 10.2ms | Allocations: 2269)
+  Rendered cards/new.html.erb within layouts/application (Duration: 11.5ms | Allocations: 2615)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:48
+  Rendered layout layouts/application.html.erb (Duration: 26.3ms | Allocations: 10092)
+Completed 200 OK in 31ms (Views: 27.8ms | ActiveRecord: 0.6ms | Allocations: 11723)
+
+
+Started POST "/boards/3/cards" for ::1 at 2024-01-09 15:27:16 +0100
+Processing by CardsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "card"=>{"title"=>"huhu", "description"=>"retere", "status"=>"backlog"}, "commit"=>"Save", "board_id"=>"3"}
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/cards_controller.rb:67:in `set_board'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cards_controller.rb:30:in `block in create'
+  [1m[36mCard Create (4.9ms)[0m  [1m[32mINSERT INTO "cards" ("title", "description", "status", "board_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "huhu"], ["description", "retere"], ["status", "backlog"], ["board_id", 3], ["created_at", "2024-01-09 14:27:16.243128"], ["updated_at", "2024-01-09 14:27:16.243128"]]
+  ↳ app/controllers/cards_controller.rb:30:in `block in create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cards_controller.rb:30:in `block in create'
+Redirected to http://localhost:3000/boards/3
+Completed 302 Found in 13ms (ActiveRecord: 5.7ms | Allocations: 3389)
+
+
+Started GET "/boards/3" for ::1 at 2024-01-09 15:27:16 +0100
+Processing by BoardsController#show as TURBO_STREAM
+  Parameters: {"id"=>"3"}
+  [1m[36mBoard Load (0.2ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:64:in `set_board'
+  Rendering layout layouts/application.html.erb
+  Rendering boards/show.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/boards/show.html.erb:2
+  [1m[36mCard Load (0.3ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 3]]
+  ↳ app/views/boards/show.html.erb:20
+  Rendered boards/_button_to_prev_status.html.erb (Duration: 0.7ms | Allocations: 196)
+  Rendered boards/_button_to_next_status.html.erb (Duration: 3.4ms | Allocations: 827)
+  Rendered boards/show.html.erb within layouts/application (Duration: 10.8ms | Allocations: 2962)
+  Rendered layout layouts/application.html.erb (Duration: 23.6ms | Allocations: 9481)
+Completed 200 OK in 26ms (Views: 23.2ms | ActiveRecord: 1.1ms | Allocations: 10478)
+
+
+Started PATCH "/boards/3/cards/4" for ::1 at 2024-01-09 15:27:17 +0100
+Processing by CardsController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "card"=>{"status"=>"todo"}, "commit"=>"→", "board_id"=>"3", "id"=>"4"}
+  [1m[36mBoard Load (0.2ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/cards_controller.rb:67:in `set_board'
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1 AND "cards"."id" = $2 LIMIT $3[0m  [["board_id", 3], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cards_controller.rb:71:in `set_card'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cards_controller.rb:44:in `block in update'
+  [1m[36mCard Update (1.7ms)[0m  [1m[33mUPDATE "cards" SET "status" = $1, "updated_at" = $2 WHERE "cards"."id" = $3[0m  [["status", "todo"], ["updated_at", "2024-01-09 14:27:17.821692"], ["id", 4]]
+  ↳ app/controllers/cards_controller.rb:44:in `block in update'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cards_controller.rb:44:in `block in update'
+Redirected to http://localhost:3000/boards/3
+Completed 302 Found in 11ms (ActiveRecord: 2.6ms | Allocations: 4040)
+
+
+Started GET "/boards/3" for ::1 at 2024-01-09 15:27:17 +0100
+Processing by BoardsController#show as TURBO_STREAM
+  Parameters: {"id"=>"3"}
+  [1m[36mBoard Load (0.2ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:64:in `set_board'
+  Rendering layout layouts/application.html.erb
+  Rendering boards/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/boards/show.html.erb:2
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 3]]
+  ↳ app/views/boards/show.html.erb:20
+  Rendered boards/_button_to_prev_status.html.erb (Duration: 0.9ms | Allocations: 460)
+  Rendered boards/_button_to_next_status.html.erb (Duration: 0.6ms | Allocations: 433)
+  Rendered boards/show.html.erb within layouts/application (Duration: 5.6ms | Allocations: 2633)
+  Rendered layout layouts/application.html.erb (Duration: 17.0ms | Allocations: 8993)
+Completed 200 OK in 20ms (Views: 17.1ms | ActiveRecord: 0.6ms | Allocations: 9987)
+
+
+Started GET "/" for ::1 at 2024-01-09 15:27:21 +0100
+Processing by BoardsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering boards/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/boards/index.html.erb:2
+  [1m[36mBoard Load (0.4ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  ↳ app/views/boards/index.html.erb:8
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/views/boards/index.html.erb:13
+  [1m[36mCard Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:13:in `last_change'
+  [1m[36mCard Maximum (0.2ms)[0m  [1m[34mSELECT MAX("cards"."updated_at") FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:15:in `last_change'
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 3]]
+  ↳ app/views/boards/index.html.erb:13
+  [1m[36mCard Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 3]]
+  ↳ app/models/board.rb:13:in `last_change'
+  [1m[36mCard Maximum (0.3ms)[0m  [1m[34mSELECT MAX("cards"."updated_at") FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 3]]
+  ↳ app/models/board.rb:15:in `last_change'
+  Rendered boards/index.html.erb within layouts/application (Duration: 12.7ms | Allocations: 5685)
+  Rendered layout layouts/application.html.erb (Duration: 23.7ms | Allocations: 12010)
+Completed 200 OK in 25ms (Views: 22.2ms | ActiveRecord: 2.1ms | Allocations: 12456)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2024-01-09 15:27:33 +0100
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 25ms (ActiveRecord: 0.2ms | Allocations: 5721)
+
+
+Started GET "/" for ::1 at 2024-01-09 15:27:33 +0100
+Processing by BoardsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering boards/index.html.erb within layouts/application
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  ↳ app/views/boards/index.html.erb:8
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/views/boards/index.html.erb:13
+  [1m[36mCard Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:13:in `last_change'
+  [1m[36mCard Maximum (0.3ms)[0m  [1m[34mSELECT MAX("cards"."updated_at") FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:15:in `last_change'
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 3]]
+  ↳ app/views/boards/index.html.erb:13
+  [1m[36mCard Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 3]]
+  ↳ app/models/board.rb:13:in `last_change'
+  [1m[36mCard Maximum (0.2ms)[0m  [1m[34mSELECT MAX("cards"."updated_at") FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 3]]
+  ↳ app/models/board.rb:15:in `last_change'
+  Rendered boards/index.html.erb within layouts/application (Duration: 10.7ms | Allocations: 4962)
+  Rendered layout layouts/application.html.erb (Duration: 21.5ms | Allocations: 11227)
+Completed 200 OK in 23ms (Views: 20.6ms | ActiveRecord: 1.6ms | Allocations: 11755)
+
+
+Started GET "/" for ::1 at 2024-01-09 15:29:28 +0100
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BoardsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering boards/index.html.erb within layouts/application
+  [1m[36mBoard Load (0.6ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  ↳ app/views/boards/index.html.erb:8
+  [1m[36mCard Load (0.6ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/views/boards/index.html.erb:13
+  [1m[36mCard Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:13:in `last_change'
+  [1m[36mCard Maximum (0.3ms)[0m  [1m[34mSELECT MAX("cards"."updated_at") FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:15:in `last_change'
+  [1m[36mCard Load (0.3ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 3]]
+  ↳ app/views/boards/index.html.erb:13
+  [1m[36mCard Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 3]]
+  ↳ app/models/board.rb:13:in `last_change'
+  [1m[36mCard Maximum (0.3ms)[0m  [1m[34mSELECT MAX("cards"."updated_at") FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 3]]
+  ↳ app/models/board.rb:15:in `last_change'
+  Rendered boards/index.html.erb within layouts/application (Duration: 58.6ms | Allocations: 18815)
+  Rendered layout layouts/application.html.erb (Duration: 208.2ms | Allocations: 67093)
+Completed 200 OK in 227ms (Views: 202.9ms | ActiveRecord: 10.2ms | Allocations: 71117)
+
+
+Started GET "/" for ::1 at 2024-01-09 15:29:29 +0100
+Processing by BoardsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering boards/index.html.erb within layouts/application
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  ↳ app/views/boards/index.html.erb:8
+  [1m[36mCard Load (0.3ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/views/boards/index.html.erb:13
+  [1m[36mCard Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:13:in `last_change'
+  [1m[36mCard Maximum (0.3ms)[0m  [1m[34mSELECT MAX("cards"."updated_at") FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:15:in `last_change'
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 3]]
+  ↳ app/views/boards/index.html.erb:13
+  [1m[36mCard Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 3]]
+  ↳ app/models/board.rb:13:in `last_change'
+  [1m[36mCard Maximum (0.2ms)[0m  [1m[34mSELECT MAX("cards"."updated_at") FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 3]]
+  ↳ app/models/board.rb:15:in `last_change'
+  Rendered boards/index.html.erb within layouts/application (Duration: 10.9ms | Allocations: 5042)
+  Rendered layout layouts/application.html.erb (Duration: 22.7ms | Allocations: 11294)
+Completed 200 OK in 24ms (Views: 21.5ms | ActiveRecord: 1.8ms | Allocations: 11835)
+
+
+Started GET "/" for ::1 at 2024-01-09 15:29:30 +0100
+Processing by BoardsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering boards/index.html.erb within layouts/application
+  [1m[36mBoard Load (0.2ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  ↳ app/views/boards/index.html.erb:8
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/views/boards/index.html.erb:13
+  [1m[36mCard Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:13:in `last_change'
+  [1m[36mCard Maximum (0.3ms)[0m  [1m[34mSELECT MAX("cards"."updated_at") FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:15:in `last_change'
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 3]]
+  ↳ app/views/boards/index.html.erb:13
+  [1m[36mCard Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 3]]
+  ↳ app/models/board.rb:13:in `last_change'
+  [1m[36mCard Maximum (0.4ms)[0m  [1m[34mSELECT MAX("cards"."updated_at") FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 3]]
+  ↳ app/models/board.rb:15:in `last_change'
+  Rendered boards/index.html.erb within layouts/application (Duration: 11.9ms | Allocations: 4784)
+  Rendered layout layouts/application.html.erb (Duration: 25.4ms | Allocations: 10913)
+Completed 200 OK in 27ms (Views: 23.8ms | ActiveRecord: 2.0ms | Allocations: 11339)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (119.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "kanban_development"[0m
+  [1m[35m (59.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "kanban_test"[0m
+  [1m[35m (257.6ms)[0m  [1m[35mCREATE DATABASE "kanban_development" ENCODING = 'unicode'[0m
+  [1m[35m (122.6ms)[0m  [1m[35mCREATE DATABASE "kanban_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "boards" CASCADE[0m
+  [1m[35m (17.6ms)[0m  [1m[35mCREATE TABLE "boards" ("id" bigserial primary key, "title" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "cards" CASCADE[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "cards" ("id" bigserial primary key, "title" character varying, "description" character varying, "status" character varying, "board_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE INDEX "index_cards_on_board_id" ON "cards" ("board_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6))[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (3.4ms)[0m  [1m[35mALTER TABLE "cards" ADD CONSTRAINT "fk_rails_91697daa44"
+FOREIGN KEY ("board_id")
+  REFERENCES "boards" ("id")
+[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20231221113756)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20221212181523),
+(20221212181541),
+(20231221113636);
+
+[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2024-01-09 14:29:51.149167"], ["updated_at", "2024-01-09 14:29:51.149167"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "876d883b359fa3e06529a5fb4500d33615d7641e"], ["created_at", "2024-01-09 14:29:51.158451"], ["updated_at", "2024-01-09 14:29:51.158451"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "boards" CASCADE[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "boards" ("id" bigserial primary key, "title" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "cards" CASCADE[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "cards" ("id" bigserial primary key, "title" character varying, "description" character varying, "status" character varying, "board_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_cards_on_board_id" ON "cards" ("board_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6))[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (2.1ms)[0m  [1m[35mALTER TABLE "cards" ADD CONSTRAINT "fk_rails_91697daa44"
+FOREIGN KEY ("board_id")
+  REFERENCES "boards" ("id")
+[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20231221113756)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20221212181523),
+(20221212181541),
+(20231221113636);
+
+[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2024-01-09 14:29:51.234840"], ["updated_at", "2024-01-09 14:29:51.234840"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2024-01-09 14:29:51.240946"], ["key", "environment"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "876d883b359fa3e06529a5fb4500d33615d7641e"], ["created_at", "2024-01-09 14:29:51.246376"], ["updated_at", "2024-01-09 14:29:51.246376"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBoard Create (0.7ms)[0m  [1m[32mINSERT INTO "boards" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Semesterprojekt"], ["created_at", "2024-01-09 14:29:51.296438"], ["updated_at", "2024-01-09 14:29:51.296438"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCard Create (0.9ms)[0m  [1m[32mINSERT INTO "cards" ("title", "description", "status", "board_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Konzept"], ["description", "Abgabe am 26.Oktober"], ["status", "backlog"], ["board_id", 1], ["created_at", "2024-01-09 14:29:51.316408"], ["updated_at", "2024-01-09 14:29:51.316408"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCard Create (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "description", "status", "board_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Wichtigster Use Case"], ["description", "definiere den wichtigstesn Use Case"], ["status", "backlog"], ["board_id", 1], ["created_at", "2024-01-09 14:29:51.321717"], ["updated_at", "2024-01-09 14:29:51.321717"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBoard Create (0.2ms)[0m  [1m[32mINSERT INTO "boards" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Weihnachten"], ["created_at", "2024-01-09 14:29:51.325828"], ["updated_at", "2024-01-09 14:29:51.325828"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCard Create (0.4ms)[0m  [1m[32mINSERT INTO "cards" ("title", "description", "status", "board_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Geschenk für Mama"], ["description", "Recherche notwendig!"], ["status", "backlog"], ["board_id", 2], ["created_at", "2024-01-09 14:29:51.330128"], ["updated_at", "2024-01-09 14:29:51.330128"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2024-01-09 15:30:01 +0100
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BoardsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering boards/index.html.erb within layouts/application
+  [1m[36mBoard Load (0.6ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  ↳ app/views/boards/index.html.erb:8
+  [1m[36mCard Load (0.6ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 1]]
+  ↳ app/views/boards/index.html.erb:13
+  [1m[36mCard Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 1]]
+  ↳ app/models/board.rb:13:in `last_change'
+  [1m[36mCard Maximum (0.5ms)[0m  [1m[34mSELECT MAX("cards"."updated_at") FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 1]]
+  ↳ app/models/board.rb:15:in `last_change'
+  [1m[36mCard Load (0.4ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/views/boards/index.html.erb:13
+  [1m[36mCard Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:13:in `last_change'
+  [1m[36mCard Maximum (0.3ms)[0m  [1m[34mSELECT MAX("cards"."updated_at") FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:15:in `last_change'
+  Rendered boards/index.html.erb within layouts/application (Duration: 53.9ms | Allocations: 18799)
+  Rendered layout layouts/application.html.erb (Duration: 175.7ms | Allocations: 66961)
+Completed 200 OK in 190ms (Views: 167.5ms | ActiveRecord: 11.3ms | Allocations: 70988)
+
+
