@@ -1,0 +1,30 @@
+<h1>All Boards</h1>
+<% if !user_signed_in? %>
+  <p> Log in to access all functionalities </p>
+  <% end %>
+
+<div class="list-group">
+
+  <% @boards.each do |board| %>
+
+    <li class="list-group-item align-items-center">
+      <h5 class="list-group-item-heading d-flex  justify-content-between">
+        <%= link_to board.title, board_path( board )%>
+        <span class="badge badge-pill badge-primary"><%= board.cards.length %></span>
+      </h5>
+      <p class="list-group-item-text">Last Modified <%= time_ago_in_words board.last_change %> ago.</p>
+      <p class="list-group-item-text">
+      <% if user_signed_in? %> 
+        <%= link_to 'Edit Board Settings', edit_board_path(board) %>,
+        <%= link_to 'Delete Board', board, data: { turbo_confirm: 'Are you sure?', turbo_method: :delete} %>
+      <% end %>
+      </p>
+    </li>
+  <% end %>
+  <% if user_signed_in? %> 
+  <li class="list-group-item list-group-item-action">
+    <h5 class="list-group-item-heading">Add a <%= link_to 'New Board', new_board_path %></h5>
+  </li>
+  <% end %>
+
+</div>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kanban</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <nav class="navbar navbar-light mb-1" style="background-color: #e3f2fd; padding: 1em;">
+      <a class="navbar-brand" href="/">
+        <%= image_tag('logo.svg', size: "30x30", alt: "Kanban Boards", class: 'd-inline-block') %>
+        Kanban Boards
+      </a>
+
+      <span class="navbar-text float-xs-right">
+        <a style="margin: 1em;"> <%= link_to 'Login', new_user_session_path %> </a>
+        <a style="margin: 1em;"> <%= link_to 'Register', new_user_registration_path %> </a>
+      </span>
+    </nav>
+    <div class="container">
+      <% if flash.any? %>
+        <div style="position: absolute; top: 0; right: 0; width: 100vw; z-index: 1000;">
+        <% flash.each do |key, value| %>
+          <div role="alert" aria-live="assertive" aria-atomic="true" class="toast top-0">
+            <div class="toast-header">
+              <strong class="me-auto"><%= key.capitalize %></strong>
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+              <%= value %>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      <% end %>
+
+    <%= yield %>
+    </div>
+    <footer class="bd-footer text-muted">
+      <div class="container">
+        <p>You have made <%= session[:counter] %> requests
+      in session <%= session.id %> </p>
+        <p>
+        <% if user_signed_in? %> 
+          <div> Welcome <%= current_user.email %> </div> 
+          <%= button_to "Sign out", destroy_user_session_path, method: :delete %> <% end %>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
