@@ -3175,3 +3175,87 @@ Processing by BoardsController#show as HTML
 Completed 200 OK in 38ms (Views: 33.7ms | ActiveRecord: 0.5ms | Allocations: 9700)
 
 
+Started GET "/jobs" for ::1 at 2024-01-09 14:48:04 +0100
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/jobs"):
+  
+Started GET "/" for ::1 at 2024-01-09 14:48:07 +0100
+Processing by BoardsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering boards/index.html.erb within layouts/application
+  [1m[36mBoard Load (0.7ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  ↳ app/views/boards/index.html.erb:8
+  [1m[36mCard Load (0.6ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/views/boards/index.html.erb:13
+  [1m[36mCard Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:13:in `last_change'
+  [1m[36mCard Maximum (0.3ms)[0m  [1m[34mSELECT MAX("cards"."updated_at") FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:15:in `last_change'
+  Rendered boards/index.html.erb within layouts/application (Duration: 58.1ms | Allocations: 16981)
+  Rendered layout layouts/application.html.erb (Duration: 256.3ms | Allocations: 67098)
+Completed 200 OK in 267ms (Views: 249.2ms | ActiveRecord: 9.4ms | Allocations: 70046)
+
+
+Started GET "/" for ::1 at 2024-01-09 14:48:10 +0100
+Processing by BoardsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering boards/index.html.erb within layouts/application
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  ↳ app/views/boards/index.html.erb:8
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/views/boards/index.html.erb:13
+  [1m[36mCard Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:13:in `last_change'
+  [1m[36mCard Maximum (0.3ms)[0m  [1m[34mSELECT MAX("cards"."updated_at") FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:15:in `last_change'
+  Rendered boards/index.html.erb within layouts/application (Duration: 6.4ms | Allocations: 2784)
+  Rendered layout layouts/application.html.erb (Duration: 16.7ms | Allocations: 8914)
+Completed 200 OK in 18ms (Views: 16.1ms | ActiveRecord: 1.1ms | Allocations: 9440)
+
+
+Started GET "/boards/2" for ::1 at 2024-01-09 14:48:12 +0100
+Processing by BoardsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:64:in `set_board'
+  Rendering layout layouts/application.html.erb
+  Rendering boards/show.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/views/boards/show.html.erb:20
+  Rendered boards/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1519)
+  Rendered layout layouts/application.html.erb (Duration: 13.2ms | Allocations: 7650)
+Completed 200 OK in 17ms (Views: 13.4ms | ActiveRecord: 0.5ms | Allocations: 9642)
+
+
+Started GET "/" for ::1 at 2024-01-09 14:48:37 +0100
+Processing by BoardsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering boards/index.html.erb within layouts/application
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  ↳ app/views/boards/index.html.erb:8
+  [1m[36mCard Load (0.5ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/views/boards/index.html.erb:13
+  [1m[36mCard Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:13:in `last_change'
+  [1m[36mCard Maximum (0.3ms)[0m  [1m[34mSELECT MAX("cards"."updated_at") FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/models/board.rb:15:in `last_change'
+  Rendered boards/index.html.erb within layouts/application (Duration: 8.8ms | Allocations: 2731)
+  Rendered layout layouts/application.html.erb (Duration: 20.9ms | Allocations: 8860)
+Completed 200 OK in 23ms (Views: 20.1ms | ActiveRecord: 1.4ms | Allocations: 9298)
+
+
+Started GET "/boards/2" for ::1 at 2024-01-09 14:48:38 +0100
+Processing by BoardsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBoard Load (0.2ms)[0m  [1m[34mSELECT "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/boards_controller.rb:64:in `set_board'
+  Rendering layout layouts/application.html.erb
+  Rendering boards/show.html.erb within layouts/application
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."board_id" = $1[0m  [["board_id", 2]]
+  ↳ app/views/boards/show.html.erb:20
+  Rendered boards/show.html.erb within layouts/application (Duration: 2.3ms | Allocations: 968)
+  Rendered layout layouts/application.html.erb (Duration: 13.6ms | Allocations: 7098)
+Completed 200 OK in 17ms (Views: 13.8ms | ActiveRecord: 0.5ms | Allocations: 8019)
+
+
